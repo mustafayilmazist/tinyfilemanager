@@ -1,6 +1,6 @@
 <?php
 //Default Configuration
-$CONFIG = '{"lang":"en","error_reporting":false,"show_hidden":false,"hide_Cols":false,"calc_folder":false}';
+$CONFIG = '{"lang":"tr","error_reporting":true,"show_hidden":false,"hide_Cols":false,"calc_folder":false}';
 
 /**
  * H3K | Tiny File Manager V2.4.4
@@ -21,14 +21,16 @@ define('APP_TITLE', 'Tiny File Manager');
 // Is independent from IP white- and blacklisting
 $use_auth = true;
 
-// Login user name and password
+/*// Login user name and password
 // Users: array('Username' => 'Password', 'Username2' => 'Password2', ...)
 // Generate secure password hash - https://tinyfilemanager.github.io/docs/pwd.html
 $auth_users = array(
     'admin' => '$2y$10$/K.hjNr84lLNDt8fTXjoI.DBp6PpeyoJ.mGwrrLuCZfAwfSAGqhOW', //admin@123
-    'user' => '$2y$10$Fg6Dz8oH9fPoZ2jJan5tZuv6Z4Kp7avtQ9bDfrdRntXtPeiMAZyGO' //12345
+    'user' => '$2y$10$Fg6Dz8oH9fPoZ2jJan5tZuv6Z4Kp7avtQ9bDfrdRntXtPeiMAZyGO', //12345
+    'mustafa' => '$2y$10$Fg6Dz8oH9fPoZ2jJan5tZuv6Z4Kp7avtQ9bDfrdRntXtPeiMAZyGO', //12345
+    'fatih' => '$2y$10$Fg6Dz8oH9fPoZ2jJan5tZuv6Z4Kp7avtQ9bDfrdRntXtPeiMAZyGO', //12345
 );
-
+*/
 //set application theme
 //options - 'light' and 'dark'
 $theme = 'light';
@@ -66,7 +68,7 @@ $http_host = $_SERVER['HTTP_HOST'];
 
 // user specific directories
 // array('Username' => 'Directory path', 'Username2' => 'Directory path', ...)
-$directories_users = array();
+$directories_users = array("mustafa"=>"dosyalar/mustafa","fatih"=>"dosyalar/fatih");
 
 // input encoding for iconv
 $iconv_input_encoding = 'UTF-8';
@@ -130,11 +132,11 @@ $ip_blacklist = array(
     '::'            // non-routable meta ipv6
 );
 
-// if User has the customized config file, try to use it to override the default config above
+/*// if User has the customized config file, try to use it to override the default config above
 $config_file = __DIR__.'/config.php';
 if (is_readable($config_file)) {
     @include($config_file);
-}
+}*/
 
 // --- EDIT BELOW CAREFULLY OR DO NOT EDIT AT ALL ---
 
@@ -143,10 +145,10 @@ define('MAX_UPLOAD_SIZE', $max_upload_size_bytes);
 
 define('FM_THEME', $theme);
 
-// private key and session name to store to the session
+/*// private key and session name to store to the session
 if ( !defined( 'FM_SESSION_ID')) {
     define('FM_SESSION_ID', 'filemanager');
-}
+}*/
 
 // Configuration
 $cfg = new FM_Config();
@@ -196,7 +198,7 @@ if (defined('FM_EMBED')) {
         mb_regex_encoding('UTF-8');
     }
 
-    session_cache_limiter('');
+/*    session_cache_limiter('');
     session_name(FM_SESSION_ID );
     function session_error_handling_function($code, $msg, $file, $line) {
         // Permission denied for default session, try to create a new one
@@ -208,7 +210,7 @@ if (defined('FM_EMBED')) {
     }
     set_error_handler('session_error_handling_function');
     session_start();
-    restore_error_handler();
+    restore_error_handler();*/
 }
 
 if (empty($auth_users)) {
